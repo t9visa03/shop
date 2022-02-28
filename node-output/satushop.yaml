@@ -1,0 +1,1078 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Sells fruits and berries, all you can imagine!",
+    "version" : "1.0.0",
+    "title" : "SatuStore",
+    "contact" : {
+      "name" : "Satu Virkki",
+      "email" : "t9visa03@students.oamk.fi"
+    }
+  },
+  "basePath" : "/shop",
+  "tags" : [ {
+    "name" : "categories"
+  }, {
+    "name" : "customers"
+  }, {
+    "name" : "orders"
+  }, {
+    "name" : "products"
+  } ],
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/categories/" : {
+      "get" : {
+        "tags" : [ "categories" ],
+        "summary" : "Lists all the product categories",
+        "operationId" : "getCategories",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "List of categories",
+            "schema" : {
+              "$ref" : "#/definitions/CategoryList"
+            }
+          }
+        }
+      }
+    },
+    "/categories/{id}" : {
+      "get" : {
+        "tags" : [ "categories" ],
+        "summary" : "Get a category by id",
+        "operationId" : "getCategoriesId",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Id of a category",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Collection of products",
+            "schema" : {
+              "$ref" : "#/definitions/ProductList"
+            }
+          }
+        }
+      }
+    },
+    "/customers/{id}" : {
+      "get" : {
+        "tags" : [ "customers" ],
+        "summary" : "Get a customer by id",
+        "operationId" : "getCustomersId",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Id of a customer",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Customer details",
+            "schema" : {
+              "$ref" : "#/definitions/Customer"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "customers" ],
+        "summary" : "Replace a customer by new data",
+        "operationId" : "putCustomersId",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Id of a customer",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Customer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Customer details",
+            "schema" : {
+              "$ref" : "#/definitions/Customer"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "customers" ],
+        "summary" : "Delete a customer",
+        "operationId" : "deleteCustomersId",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Id of a customer",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "Successful",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "customers" ],
+        "summary" : "Update a customer",
+        "operationId" : "patchCustomersId",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Id of a customer",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/CustomerPatch"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Customer details",
+            "schema" : {
+              "$ref" : "#/definitions/Customer"
+            }
+          }
+        }
+      }
+    },
+    "/customers/" : {
+      "get" : {
+        "tags" : [ "customers" ],
+        "summary" : "Lists all the customers",
+        "operationId" : "getCustomers",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Collection of customers",
+            "schema" : {
+              "$ref" : "#/definitions/CustomerList"
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "customers" ],
+        "summary" : "Create a customer",
+        "operationId" : "postCustomers",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Customer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Customer details",
+            "schema" : {
+              "$ref" : "#/definitions/Customer"
+            }
+          }
+        }
+      }
+    },
+    "/orders/{id}" : {
+      "get" : {
+        "tags" : [ "orders" ],
+        "summary" : "Get an order by id",
+        "operationId" : "getOrdersId",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Id of an order",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Order details",
+            "schema" : {
+              "$ref" : "#/definitions/Order"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "orders" ],
+        "summary" : "Delete an order",
+        "operationId" : "deleteOrdersId",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Id of an order",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "Successful",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/orders/" : {
+      "get" : {
+        "tags" : [ "orders" ],
+        "summary" : "Lists all the orders",
+        "operationId" : "getOrders",
+        "parameters" : [ {
+          "name" : "page",
+          "in" : "query",
+          "required" : false,
+          "type" : "number"
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "type" : "number"
+        }, {
+          "name" : "state",
+          "in" : "query",
+          "description" : "State of the order",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "created", "ordered", "delivered", "canceled" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Collection of orders",
+            "schema" : {
+              "$ref" : "#/definitions/OrderList"
+            }
+          }
+        }
+      }
+    },
+    "/products/{id}" : {
+      "get" : {
+        "tags" : [ "products" ],
+        "summary" : "Get a product by id",
+        "operationId" : "getProductsId",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Id of a product",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Product description",
+            "schema" : {
+              "$ref" : "#/definitions/Product"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "products" ],
+        "summary" : "Replace a product by new data",
+        "operationId" : "putProductsId",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Id of a product",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Product"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Product description",
+            "schema" : {
+              "$ref" : "#/definitions/Product"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "products" ],
+        "summary" : "Delete a product",
+        "operationId" : "deleteProductsId",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Id of a product",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "Successful",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "products" ],
+        "summary" : "Update one or more properties of a product",
+        "operationId" : "patchProductsId",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Id of a product",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ProductPatch"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Product description",
+            "schema" : {
+              "$ref" : "#/definitions/Product"
+            }
+          }
+        }
+      }
+    },
+    "/products/" : {
+      "get" : {
+        "tags" : [ "products" ],
+        "summary" : "Lists all the products",
+        "operationId" : "getProducts",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Collection of products",
+            "schema" : {
+              "$ref" : "#/definitions/ProductList"
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "products" ],
+        "summary" : "Create a product",
+        "operationId" : "postProducts",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Product"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "Successful",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/customers/{id}/orders/" : {
+      "get" : {
+        "tags" : [ "customers" ],
+        "summary" : "Get the orders of a customer",
+        "operationId" : "getCustomersIdOrders",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Id of a customer",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Collection of orders",
+            "schema" : {
+              "$ref" : "#/definitions/OrderList"
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "customers" ],
+        "summary" : "Create an order for a customer",
+        "operationId" : "postCustomersIdOrders",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Id of a customer",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Order details",
+            "schema" : {
+              "$ref" : "#/definitions/Order"
+            }
+          }
+        }
+      }
+    },
+    "/orders/{id}/items/" : {
+      "get" : {
+        "tags" : [ "orders" ],
+        "summary" : "Get the items of an order",
+        "operationId" : "getOrdersIdItems",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Id of an order",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Collection of items",
+            "schema" : {
+              "$ref" : "#/definitions/Items"
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "orders" ],
+        "summary" : "Add an item to an order",
+        "operationId" : "postOrdersIdItems",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Id of an order",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Item"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Item details",
+            "schema" : {
+              "$ref" : "#/definitions/Item"
+            }
+          }
+        }
+      }
+    },
+    "/orders/{oid}/items/{iid}" : {
+      "get" : {
+        "tags" : [ "orders" ],
+        "summary" : "Get an item of an order",
+        "operationId" : "getOrdersOidItemsIid",
+        "parameters" : [ {
+          "name" : "oid",
+          "in" : "path",
+          "description" : "Id of an order",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "iid",
+          "in" : "path",
+          "description" : "Id of an item",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Item details",
+            "schema" : {
+              "$ref" : "#/definitions/Item"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "orders" ],
+        "summary" : "Delete an item of an order",
+        "operationId" : "deleteOrdersOidItemsIid",
+        "parameters" : [ {
+          "name" : "oid",
+          "in" : "path",
+          "description" : "Id of an order",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "iid",
+          "in" : "path",
+          "description" : "Id of an item",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "Successful",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/orders/{id}/actions/purchase" : {
+      "post" : {
+        "tags" : [ "orders" ],
+        "summary" : "Purchase an order",
+        "operationId" : "postOrdersIdActionsPurchase",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Id of an order",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "Successful",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/orders/{id}/actions/cancel" : {
+      "post" : {
+        "tags" : [ "orders" ],
+        "summary" : "Cancel an order",
+        "operationId" : "postOrdersIdActionsCancel",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "Id of an order",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "Successful",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "CategoryEntry" : {
+      "type" : "object",
+      "required" : [ "name" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "example" : "Fruits",
+          "description" : "Name of the category"
+        },
+        "category_url" : {
+          "type" : "string",
+          "example" : "/shop/categories/Fruits"
+        }
+      },
+      "description" : "Category entry",
+      "x-meta" : {
+        "className" : "CategoryEntry"
+      }
+    },
+    "categories" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/CategoryEntry"
+      }
+    },
+    "CategoryList" : {
+      "type" : "object",
+      "description" : "List of categories",
+      "x-meta" : {
+        "className" : "CategoryList"
+      }
+    },
+    "Meta" : {
+      "type" : "object",
+      "required" : [ "count" ],
+      "properties" : {
+        "count" : {
+          "type" : "integer",
+          "example" : 22,
+          "description" : "Total number of entries"
+        },
+        "limit" : {
+          "type" : "integer",
+          "example" : 10,
+          "description" : "How many entries are delivered in one response"
+        },
+        "page" : {
+          "type" : "integer",
+          "example" : 2,
+          "description" : "Number of the page within the results"
+        },
+        "previous_url" : {
+          "type" : "string",
+          "example" : "/shop/products/?page=1&limit=10",
+          "description" : "URL to the previous page of results"
+        },
+        "next_url" : {
+          "type" : "string",
+          "example" : "/shop/products/?page=3&limit=10",
+          "description" : "URL to the next page of results"
+        }
+      },
+      "description" : "Metadata about a collection of resources.",
+      "x-meta" : {
+        "className" : "Meta"
+      }
+    },
+    "ProductEntry" : {
+      "type" : "object",
+      "required" : [ "name" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "description" : "Name of the product"
+        },
+        "product_url" : {
+          "type" : "string"
+        }
+      },
+      "description" : "Entry of a product collection",
+      "example" : {
+        "name" : "Pineapples",
+        "product_url" : "/shop/products/33"
+      },
+      "x-meta" : {
+        "className" : "ProductEntry"
+      }
+    },
+    "products" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/ProductEntry"
+      }
+    },
+    "ProductList" : {
+      "type" : "object",
+      "properties" : {
+        "meta" : {
+          "$ref" : "#/definitions/Meta"
+        },
+        "products" : {
+          "$ref" : "#/definitions/products"
+        }
+      },
+      "description" : "Collection of products",
+      "x-meta" : {
+        "className" : "ProductList"
+      }
+    },
+    "Customer" : {
+      "type" : "object",
+      "required" : [ "firstname", "lastname" ],
+      "properties" : {
+        "firstname" : {
+          "type" : "string",
+          "example" : "Fred"
+        },
+        "lastname" : {
+          "type" : "string",
+          "example" : "Meyers"
+        },
+        "orders_url" : {
+          "type" : "string",
+          "description" : "Link to the orders of the customer"
+        },
+        "customer_url" : {
+          "type" : "string",
+          "description" : "Link to the customer resource"
+        }
+      },
+      "description" : "Customer details",
+      "example" : {
+        "firstname" : "Freddy",
+        "lastname" : "Meyers"
+      },
+      "x-meta" : {
+        "className" : "Customer"
+      }
+    },
+    "CustomerEntry" : {
+      "type" : "object",
+      "required" : [ "firstname", "lastname" ],
+      "properties" : {
+        "firstname" : {
+          "type" : "string",
+          "example" : "Susan"
+        },
+        "lastname" : {
+          "type" : "string",
+          "example" : "Tanner"
+        },
+        "customer_url" : {
+          "type" : "string",
+          "example" : "/shop/customer/642"
+        }
+      },
+      "description" : "Entry of a collection of customers",
+      "x-meta" : {
+        "className" : "customerEntry"
+      }
+    },
+    "customers" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/CustomerEntry"
+      }
+    },
+    "CustomerList" : {
+      "type" : "object",
+      "properties" : {
+        "meta" : {
+          "$ref" : "#/definitions/Meta"
+        },
+        "customers" : {
+          "$ref" : "#/definitions/customers"
+        }
+      },
+      "description" : "Collection of customers",
+      "x-meta" : {
+        "className" : "CustomerList"
+      }
+    },
+    "ActionDescription" : {
+      "type" : "object",
+      "properties" : {
+        "url" : {
+          "type" : "string",
+          "example" : "/shop/orders/7959/actions/purchase"
+        },
+        "method" : {
+          "type" : "string",
+          "enum" : [ "POST" ]
+        }
+      },
+      "description" : "Description of a possible action on the resource",
+      "x-meta" : {
+        "className" : "ActionDescription"
+      }
+    },
+    "Actions" : {
+      "type" : "object",
+      "properties" : {
+        "purchase" : {
+          "$ref" : "#/definitions/ActionDescription"
+        },
+        "cancel" : {
+          "$ref" : "#/definitions/ActionDescription"
+        }
+      },
+      "description" : "Actions that the order supports",
+      "example" : {
+        "purchase" : {
+          "url" : "/shop/orders/7959/actions/purchase",
+          "method" : "POST"
+        }
+      },
+      "x-meta" : {
+        "className" : "Actions"
+      }
+    },
+    "Order" : {
+      "type" : "object",
+      "required" : [ "actions" ],
+      "properties" : {
+        "createdAt" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "updatedAt" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "state" : {
+          "type" : "string",
+          "description" : "State of the order",
+          "enum" : [ "created", "ordered", "delivered", "canceled" ]
+        },
+        "customer_url" : {
+          "type" : "string",
+          "example" : "/shop/customers/342"
+        },
+        "actions" : {
+          "$ref" : "#/definitions/Actions"
+        },
+        "items_url" : {
+          "type" : "string"
+        },
+        "total" : {
+          "type" : "number",
+          "example" : 4.5,
+          "description" : "Price of a good",
+          "x-constraint" : {
+            "positive" : true
+          }
+        }
+      },
+      "description" : "Order details",
+      "x-meta" : {
+        "className" : "Order"
+      }
+    },
+    "OrderEntry" : {
+      "type" : "object",
+      "properties" : {
+        "createdAt" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "state" : {
+          "type" : "string",
+          "description" : "State of the order",
+          "enum" : [ "created", "ordered", "delivered", "canceled" ]
+        },
+        "order_url" : {
+          "type" : "string",
+          "example" : "/shop/orders/7832"
+        }
+      },
+      "description" : "List entry of an order",
+      "x-meta" : {
+        "className" : "OrderEntry"
+      }
+    },
+    "orders" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/OrderEntry"
+      }
+    },
+    "OrderList" : {
+      "type" : "object",
+      "properties" : {
+        "meta" : {
+          "$ref" : "#/definitions/Meta"
+        },
+        "orders" : {
+          "$ref" : "#/definitions/orders"
+        }
+      },
+      "description" : "Collection of orders",
+      "x-meta" : {
+        "className" : "OrderList"
+      }
+    },
+    "Product" : {
+      "type" : "object",
+      "required" : [ "price" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "example" : "Berries",
+          "description" : "Name of a product"
+        },
+        "price" : {
+          "type" : "number",
+          "example" : 4.5,
+          "description" : "Price of a good",
+          "x-constraint" : {
+            "positive" : true
+          }
+        },
+        "category" : {
+          "type" : "string",
+          "example" : "Fruits",
+          "description" : "Category of products e.g. Fruits"
+        },
+        "category_url" : {
+          "type" : "string"
+        }
+      },
+      "description" : "Product description",
+      "example" : {
+        "name" : "Wildberries",
+        "price" : 4.99,
+        "category_url" : "/shop/categories/Fruits",
+        "vendor_url" : "/shop/vendors/672"
+      },
+      "x-meta" : {
+        "className" : "Product"
+      }
+    },
+    "Item" : {
+      "type" : "object",
+      "required" : [ "price" ],
+      "properties" : {
+        "quantity" : {
+          "type" : "number",
+          "example" : 5.0
+        },
+        "price" : {
+          "type" : "number",
+          "example" : 4.5,
+          "description" : "Price of a good",
+          "x-constraint" : {
+            "positive" : true
+          }
+        },
+        "item_url" : {
+          "type" : "string"
+        },
+        "product" : {
+          "type" : "number"
+        },
+        "product_url" : {
+          "type" : "string"
+        },
+        "order_url" : {
+          "type" : "string"
+        }
+      },
+      "description" : "Item details",
+      "example" : {
+        "quantity" : 5,
+        "price" : 0.9,
+        "item_url" : "/shop/orders/1432/items/1",
+        "product_url" : "/shop/products/3"
+      },
+      "x-meta" : {
+        "className" : "Item"
+      }
+    },
+    "ItemList" : {
+      "type" : "array",
+      "description" : "Collection of items",
+      "items" : {
+        "$ref" : "#/definitions/Item"
+      },
+      "x-meta" : {
+        "className" : "ItemList"
+      }
+    },
+    "Items" : {
+      "type" : "object",
+      "required" : [ "items" ],
+      "properties" : {
+        "order_url" : {
+          "type" : "string",
+          "example" : "/shop/orders/1432"
+        },
+        "items" : {
+          "$ref" : "#/definitions/ItemList"
+        }
+      },
+      "description" : "Collection of items",
+      "x-meta" : {
+        "className" : "Items"
+      }
+    },
+    "File" : {
+      "type" : "object"
+    },
+    "CustomerPatch" : {
+      "type" : "object",
+      "properties" : {
+        "firstname" : {
+          "type" : "string",
+          "example" : "Tiina"
+        },
+        "lastname" : {
+          "type" : "string",
+          "example" : "Virtanen"
+        }
+      },
+      "description" : "Any properties of the customer can be updated e.g. { \"firstname\": \"Kai\" }",
+      "example" : {
+        "firstname" : "Tiina",
+        "lastname" : "Virtanen"
+      },
+      "x-meta" : {
+        "className" : "CustomerPatch"
+      }
+    },
+    "ProductPatch" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "example" : "Berries",
+          "description" : "Name of a product"
+        },
+        "price" : {
+          "type" : "number",
+          "example" : 4.5,
+          "description" : "Price of a fruit",
+          "x-constraint" : {
+            "positive" : true
+          }
+        },
+        "category" : {
+          "type" : "string",
+          "example" : "Fruits",
+          "description" : "Category of products e.g. Fruits"
+        },
+        "category_url" : {
+          "type" : "string"
+        }
+      },
+      "description" : "Structure to patch a product. All the properties are optional.",
+      "example" : {
+        "name" : "Wildberries",
+        "price" : 4.99,
+        "category_url" : "/shop/categories/Fruits",
+        "vendor_url" : "/shop/vendors/672"
+      },
+      "x-meta" : {
+        "className" : "ProductPatch"
+      }
+    },
+    "NamePriceCategory" : {
+      "type" : "object",
+      "required" : [ "name" ],
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "price" : {
+          "type" : "number"
+        },
+        "category" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
