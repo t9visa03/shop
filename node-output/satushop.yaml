@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "description" : "Sells fruits and berries, all you can imagine!",
+    "description" : "Sells fruits and berries, all you can imagine!!!",
     "version" : "1.0.0",
     "title" : "SatuStore",
     "contact" : {
